@@ -17,14 +17,22 @@ This repository contains the interactive program developed for **Part 2** of the
    python main.py
 
 
-#### Step to make changes using codespace:
-1. Open the Source Control View in Codespace
-\n <img width="580" height="462" alt="image" src="https://github.com/user-attachments/assets/2506a855-0990-498f-8141-f6e06279fa2b" /> \n
-Click the codespace < super space pancake >
-2.Click commit button
-\n <img width="456" height="556" alt="image" src="https://github.com/user-attachments/assets/bc5dc4a2-157b-4d3e-aba7-eb325aacc34a" /> \n
-3.Add description and click commit
-\n <img width="1442" height="818" alt="image" src="https://github.com/user-attachments/assets/5e4f7bd5-c4f2-4783-af81-1bea9cd38e9b" /> \n
+#### Steps to Make Changes Using Codespace
+
+1. **Launch the Codespace**  
+   Click the active codespace (`super space pancake`) to enter the cloud development environment[cite: 8].
+
+   <img width="580" height="462" alt="Launch Codespace" src="https://github.com/user-attachments/assets/2506a855-0990-498f-8141-f6e06279fa2b" />
+
+2. **Open Source Control and Stage Changes**  
+   Open the Source Control view from the left sidebar and click the **Commit** button or stage modified files[cite: 3].
+
+   <img width="456" height="556" alt="Source Control View" src="https://github.com/user-attachments/assets/bc5dc4a2-157b-4d3e-aba7-eb325aacc34a" />
+
+3. **Add Commit Message and Description**  
+   Write a clear commit title and description, then confirm the commit and sync changes to GitHub[cite: 1, 3].
+
+   <img width="1442" height="818" alt="Commit Message and Description" src="https://github.com/user-attachments/assets/5e4f7bd5-c4f2-4783-af81-1bea9cd38e9b" />
 
 
 
