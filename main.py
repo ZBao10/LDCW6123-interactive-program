@@ -1,8 +1,19 @@
+"""
+====================================================================
+LDCW6123 - Fundamentals of Digital Competence for Programmer
+Group Project: Part 2 - Interactive Program (Bolt On-Demand Services)
+
+Description:
+    An interactive CLI program simulating Bolt's ride-hailing and 
+    food delivery services, featuring fare breakdown, peak hour 
+    multipliers, promo discounts, and session history tracking.
+====================================================================
+"""
 import os
 from datetime import datetime
 from decimal import Decimal, InvalidOperation
 
-
+# Global session storage for bookings and orders
 TRIP_HISTORY = []
 FOOD_HISTORY = []
 PRICING_PLANS = {
@@ -14,16 +25,19 @@ PRICING_PLANS = {
 
 
 def clear_screen():
+    """Clears the terminal screen for a better user interface experience."""
     os.system("cls" if os.name == "nt" else "clear")
 
 
 def display_header():
+    """Displays the system banner heading."""
     print("=============================================")
     print("           BOLT ON-DEMAND SERVICES           ")
     print("=============================================")
 
 
 def display_main_menu():
+    """Displays available menu options."""
     print("1. Book / Estimate Ride Fare")
     print("2. Order / Estimate Food Delivery")
     print("3. View Past Trip History")
@@ -33,6 +47,7 @@ def display_main_menu():
 
 
 def read_choice(prompt, valid_choices):
+    """Validates user menu selections to ensure input matches valid options."""
     while True:
         choice = input(prompt).strip()
         if choice in valid_choices:
@@ -41,6 +56,7 @@ def read_choice(prompt, valid_choices):
 
 
 def read_positive_decimal(prompt):
+    """Ensures input values for distance, duration, or cost are positive numbers."""
     while True:
         raw_value = input(prompt).strip()
         try:
@@ -53,6 +69,7 @@ def read_positive_decimal(prompt):
 
 
 def read_yes_no(prompt):
+    """Safely handles Yes/No user decisions."""
     while True:
         answer = input(prompt).strip().upper()
         if answer in ("Y", "N"):
@@ -61,6 +78,7 @@ def read_yes_no(prompt):
 
 
 def read_confirmation(prompt="Confirm ride booking? (1 for Yes, 0 for No): "):
+    """Handles final booking or order confirmations."""
     while True:
         answer = input(prompt).strip()
         if answer in ("1", "0"):
@@ -69,6 +87,7 @@ def read_confirmation(prompt="Confirm ride booking? (1 for Yes, 0 for No): "):
 
 
 def apply_promo_code(code, fare):
+    """Validates promotional discount codes and applies discount if valid."""
     valid_promos = {"BOLTDISRUPT", "BOLT2026"}
     if code.strip().upper() in valid_promos:
         return True, fare * Decimal("0.85")
@@ -76,6 +95,7 @@ def apply_promo_code(code, fare):
 
 
 def display_trip_history():
+    """Displays all confirmed ride bookings stored in current session memory."""
     print("\n------------- PAST TRIP HISTORY -------------")
     if not TRIP_HISTORY:
         print("No confirmed trips found in this session.")
@@ -90,6 +110,7 @@ def display_trip_history():
 
 
 def display_food_history():
+    """Displays all confirmed food delivery orders stored in current session memory."""
     print("\n----------- PAST FOOD ORDER HISTORY -----------")
     if not FOOD_HISTORY:
         print("No confirmed food orders found in this session.")
@@ -104,6 +125,10 @@ def display_food_history():
 
 
 def estimate_ride_fare():
+    """
+    Calculates estimated ride fare based on distance, duration, service tier,
+    peak hour multiplier, and optional promo codes.
+    """
     print("\n--- Bolt Ride Booking ---")
     print("Select Ride Option:")
     print("  1. Bolt Standard (Eco/Sedan)")
@@ -165,6 +190,7 @@ def estimate_ride_fare():
 
 
 def estimate_food_delivery():
+    """Calculates food delivery fare, including distance-based fee and small order surcharge."""
     print("\n--- Bolt Food Delivery ---")
     basket_total = read_positive_decimal("Enter food basket subtotal (RM): ")
     delivery_distance = read_positive_decimal("Enter delivery distance (km): ")
@@ -196,6 +222,7 @@ def estimate_food_delivery():
 
 
 def main():
+    """Main execution loop for the interactive CLI system."""
     while True:
         clear_screen()
         display_header()
